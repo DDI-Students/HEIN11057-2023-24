@@ -1,0 +1,54 @@
+---
+title: "Research Design - Spreadsheet Tidy"
+author: "B233241"
+date: "2024-06-01"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(here)
+```
+
+You will find below an Excel spreadsheet that contains data in a somewhat messy state, sources from the Care Inspectorate. It illustrates some of the difficulties that you might come across in real world data.
+
+
+# File name:
+
+mdsf_2022-03-31.xlsx
+
+
+NOTE: You should never clean your data in Excel or other non-reproducible software. For reproducibility, you need a full documentation of your process - all the way from raw data to final analyses. In order to provide this kind of audit trail, you need to code your way through the data cleaning process. That's why starting with the raw data and doing all the cleaning and preparation in R (or other reproducible tool) is the preferred way. 
+
+
+
+Step 1: Download the attached spreadsheet (note that it has multiple tabs). Open it first in Excel and check whether you can see any problematic features. (Don't change anything in the data).
+
+Step 2: Then, upload the file into R (you'll need to use the read_xlsx function from the readxl package, which is part of the tidyverse). Things will go wrong. Try to identify what went wrong and why.
+
+Step 3: From here, you can take one of two directions, depending on how technical you'd like to get:
+
+1) Option 1 is to make a list of problematic features, and note down ideas on how you could deal with them.
+
+2) Option 2 is to write code in R that would deal with the problematic issues as you read in the file.
+
+There is no need to attempt to identify or fix every single issue you spot - there are many!
+
+
+
+```{r read-in}
+
+readxl::read_xlsx("mdsf_2022-03-31.xlsx")
+
+# Example - Day care of Children sheet
+
+day_care_children_raw <- readxl::read_xlsx("mdsf_2022-03-31.xlsx",
+                                           range = "Day Care of Children!A9:S64",
+                                           col_names = TRUE)
+
+
+```
+
+
